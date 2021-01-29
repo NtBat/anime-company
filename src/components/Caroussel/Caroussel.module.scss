@@ -1,0 +1,26 @@
+.wrapper {
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 15px;
+
+  span {
+    color: #FFF;
+  }
+
+  .list {
+    margin-top: 30px;
+  }
+
+  img {
+    max-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    padding: 4px;
+    transition: all 300ms linear;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

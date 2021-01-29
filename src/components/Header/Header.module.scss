@@ -1,0 +1,137 @@
+@import "../../../styles/variables.scss";
+
+.header {
+  position: sticky;
+  width: 100%;
+  background-color: $color-black;
+  z-index: 100;
+  top: 0;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+
+    .linkLlogo {
+      img {
+        width: 220px;
+      }
+    }
+
+    .nav {
+      @media(max-width: 1023px) {
+        display: none;
+      }
+
+      ul {
+        display: flex;
+  
+        li {
+          &:not(:last-child) {
+            margin-right: 40px;
+          }
+        }
+  
+        a {
+          color: $color-zero;
+          font-size: $font-primary;
+          text-decoration: none;
+          position: relative;
+  
+          &:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 4px;
+            left: 50%;
+            bottom: -5px;
+            background-color: $color-primary;
+            transition: all 0.3s ease;
+          }
+  
+          &:hover::after {
+            width: 100%;
+            left: 0;
+          }
+  
+          &.active {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+
+  
+
+  .menu {
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+
+    @media(min-width: 1024px) {
+      display: none;
+    }
+
+    .menuBurger {
+      backface-visibility: hidden;
+      position: absolute;
+      left: 0;
+      border-top: 5px solid #ffffff;
+      width: 100%;
+      transition: 0.55s;
+      border-radius: 7px;
+    }
+
+    .menuTop {
+      top: 0;
+    }
+    .menuMid {
+      top: 8px;
+    }
+    .menuBot {
+      top: -8px;
+    }
+  }
+
+  .menuMobile {
+    width: 100%;
+    top: 0;
+    height: 100vh;
+    padding: 60px 0;
+    background: red;
+    position: fixed;
+    visibility: hidden;
+    transform: translateX(-100%);
+
+    &.active {
+      left: 0;
+      visibility: visible;
+      transform: translateX(0);
+      transition: visibility 400ms ease-in-out, transform 400ms ease-in-out;
+    }
+
+    ul {
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      a {
+        color: #FFF;
+        text-decoration: none;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .btnClose {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+}
