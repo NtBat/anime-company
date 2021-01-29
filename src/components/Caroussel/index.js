@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Util from "../../../services/Util";
 import api from "../../../services/api";
 import Slider from "react-slick";
 
