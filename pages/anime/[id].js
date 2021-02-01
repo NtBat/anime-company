@@ -32,7 +32,7 @@ export default function Anime({ anime }) {
               {anime.attributes.titles.en || anime.attributes.canonicalTitle}
             </h1>
             <p>{anime.attributes.description}</p>
-            <span>{anime.attributes.episodeCount}</span>
+            <span>{anime.attributes.episodeCount} episódios</span>
             <button onClick={() => setOpen(true)} className={styles.button}>
               <img
                 src="/assets/img/play.svg"
