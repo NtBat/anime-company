@@ -62,3 +62,74 @@
     }
   }
 }
+
+.wrapperLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .loading {
+    display: block;
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 10%;
+    margin-top: 100px;
+    position: relative;
+    box-sizing: border-box;
+    background-color: transparent;
+    animation: circle 1s linear infinite;
+    
+  
+    .circle {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0%;
+      top: 0%;
+      border-radius: 50%;
+  
+      &:before {
+        content: "";
+        width: 30%;
+        height: 30%;
+        border-radius: 50%;
+        background-color: #fff;
+        position: absolute;
+        top: -15%;
+        left: 35%;
+      }
+  
+      &.circle1 {
+        transform: rotate(0);
+        opacity: 0.2;
+      }
+      &.circle2 {
+        transform: rotate(40deg);
+        opacity: 0.4;
+      }
+      &.circle3 {
+        transform: rotate(80deg);
+        opacity: 0.5;
+      }
+      &.circle4 {
+        transform: rotate(120deg);
+        opacity: 0.8;
+      }
+      &.circle5 {
+        transform: rotate(160deg);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

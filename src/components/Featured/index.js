@@ -39,32 +39,44 @@ export default function Featured() {
 
   return (
     <div className={styles.wrapper}>
-      <div
-        className={styles.image}
-        style={{
-          backgroundImage: `url(${featured.attributes.coverImage.original})`,
-        }}
-      >
-        <div className={styles.text}>
-          <h1>
-            {featured.attributes.canonicalTitle || anime.attributes.titles.en}
-          </h1>
-          <div className={styles.button}>
-            <button className={styles.trailer}>
-              <img
-                src="/assets/img/play.svg"
-                title="Play trailer"
-                alt="Play Trailer"
-              />
-              Trailer
-            </button>
-            <button className={styles.info}>
-              <img src="/assets/img/info.svg" title="Infos" alt="Infos" />
-              Informações
-            </button>
+      {featured != null ? (
+        <div
+          className={styles.image}
+          style={{
+            backgroundImage: `url(${featured.attributes.coverImage.original})`,
+          }}
+        >
+          <div className={styles.text}>
+            <h1>
+              {featured.attributes.canonicalTitle || anime.attributes.titles.en}
+            </h1>
+            <div className={styles.button}>
+              <button className={styles.trailer}>
+                <img
+                  src="/assets/img/play.svg"
+                  title="Play trailer"
+                  alt="Play Trailer"
+                />
+                Trailer
+              </button>
+              <button className={styles.info}>
+                <img src="/assets/img/info.svg" title="Infos" alt="Infos" />
+                Informações
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className={styles.wrapperLoading}>
+          <div className={styles.loading}>
+            <div className={`${styles.circle} ${styles.circle1}`}></div>
+            <div className={`${styles.circle} ${styles.circle2}`}></div>
+            <div className={`${styles.circle} ${styles.circle3}`}></div>
+            <div className={`${styles.circle} ${styles.circle4}`}></div>
+            <div className={`${styles.circle} ${styles.circle5}`}></div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
