@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import Link from "next/link";
 import styles from "./Caroussel.module.scss";
 
-export default function Caroussel({ title }) {
+export default function Caroussel({ featured, upcoming, animes }) {
   var settings = {
     dots: false,
     autoplaySpeed: 3000,
@@ -14,98 +14,84 @@ export default function Caroussel({ title }) {
     slidesToShow: 6,
     slidesToScroll: 1,
     arrow: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
-
-  const [rows, setRows] = useState([]);
-
-  useEffect(() => {
-    function loadLocal() {
-      const data = JSON.parse(localStorage.getItem("@anime-company/home"));
-
-      if (data) {
-        setRows(data.rows);
-        return true;
-      }
-
-      return false;
-    }
-
-    async function fetch() {
-      const trending = await api.getTrending();
-
-      const rows = [
-        {
-          title: "Trending",
-          animes: trending,
-        },
-        {
-          title: "Upcoming",
-          animes: await api.getUpcoming(),
-        },
-        {
-          title: "Shonen",
-          animes: await api.getByCategory("shounen"),
-        },
-        {
-          title: "Isekai",
-          animes: await api.getByCategory("isekai"),
-        },
-        {
-          title: "Seinen",
-          animes: await api.getByCategory("seinen"),
-        },
-        {
-          title: "Mecha",
-          animes: await api.getByCategory("mecha"),
-        },
-        {
-          title: "Shoujo",
-          animes: await api.getByCategory("shoujo"),
-        },
-        {
-          title: "Josei",
-          animes: await api.getByCategory("josei"),
-        },
-        {
-          title: "Slice of Life",
-          animes: await api.getByCategory("slice-of-life"),
-        },
-      ];
-
-      localStorage.setItem(
-        "@anime-comany/home",
-        JSON.stringify({
-          rows: rows,
-        })
-      );
-
-      setRows(rows);
-    }
-
-    if (!loadLocal()) {
-      fetch();
-    }
-  }, []);
   return (
     <>
-      {rows.map((row, key) => (
-        <div className={styles.wrapper} key={key}>
-          <span className={styles.title}>{row.title}</span>
+      <div className={styles.wrapper}>
+        <span className={styles.title}>Trending</span>
 
-          <Slider {...settings} className={styles.list}>
-            {row.animes.map((anime, key) => (
-              <Link href={`/anime/${anime.id}`} key={key}>
-                <a className={styles.box}>
-                  <img
-                    alt={anime.attributes.slug}
-                    src={anime.attributes.posterImage.medium}
-                  />
-                </a>
-              </Link>
-            ))}
-          </Slider>
-        </div>
-      ))}
+        <Slider {...settings} className={styles.list}>
+          {featured.map((anime, key) => (
+            <Link href={`/anime/${anime.id}`} key={key}>
+              <a className={styles.box}>
+                <img
+                  alt={anime.attributes.slug}
+                  src={anime.attributes.posterImage.medium}
+                />
+              </a>
+            </Link>
+          ))}
+        </Slider>
+      </div>
+
+      <div className={styles.wrapper}>
+        <span className={styles.title}>Upcoming</span>
+
+        <Slider {...settings} className={styles.list}>
+          {upcoming.map((anime, key) => (
+            <Link href={`/anime/${anime.id}`} key={key}>
+              <a className={styles.box}>
+                <img
+                  alt={anime.attributes.slug}
+                  src={anime.attributes.posterImage.medium}
+                />
+              </a>
+            </Link>
+          ))}
+        </Slider>
+      </div>
+
+      <div className={styles.wrapper}>
+        <span className={styles.title}>Animes</span>
+
+        <Slider {...settings} className={styles.list}>
+          {animes.map((anime, key) => (
+            <Link href={`/anime/${anime.id}`} key={key}>
+              <a className={styles.box}>
+                <img
+                  alt={anime.attributes.slug}
+                  src={anime.attributes.posterImage.medium}
+                />
+              </a>
+            </Link>
+          ))}
+        </Slider>
+      </div>
     </>
   );
 }

@@ -1,11 +1,19 @@
 @import "../../../styles/variables.scss";
 
 .header {
-  position: sticky;
+  position: fixed;
   width: 100%;
-  background-color: $color-black;
   z-index: 100;
   top: 0;
+
+  &.active {
+    background: $color-black;
+    transition: all 300ms linear;
+  }
+
+  @media(max-width: 900px){
+    background: $color-black;
+  }
 
   .wrapper {
     display: flex;
@@ -13,10 +21,13 @@
     align-items: center;
     height: 60px;
 
-    .linkLlogo {
-      img {
-        width: 220px;
-      }
+    @media(max-width: 900px){
+      background: $color-black;
+      height: 40px;
+    }
+
+    img {
+      display: block;
     }
 
     .nav {
@@ -69,6 +80,10 @@
     cursor: pointer;
     position: relative;
     width: 30px;
+
+    @media(max-width: 900px){
+      margin-top: -7px;
+    }
 
     @media(min-width: 1024px) {
       display: none;

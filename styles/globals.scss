@@ -159,6 +159,10 @@ a {
     font-size: 30px;
     content: '<';
   }
+
+  @media(max-width: 900px) {
+    display: none !important; 
+  }
 }
 
 .slick-next {
@@ -184,5 +188,9 @@ a {
     height: 40px;
     font-size: 30px;
     content: '<';
+  }
+
+  @media(max-width: 900px) {
+    display: none !important; 
   }
 }

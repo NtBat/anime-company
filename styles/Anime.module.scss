@@ -6,6 +6,10 @@
     width: 100%;
     max-width: 100%;
     background-size: cover;
+
+    @media(max-width: 900px) {
+      height: 40vh;
+    }
   }
 
   .text {

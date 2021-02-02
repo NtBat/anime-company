@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -6,6 +6,7 @@ import styles from "./Header.module.scss";
 
 function Header() {
   const router = useRouter();
+  const [opacity, setOpacity] = useState(false);
 
   const [menuBurger, setActiveMenuBurger] = useState(false);
 
@@ -13,8 +14,24 @@ function Header() {
     setActiveMenuBurger(!menuBurger);
   }
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
+
+  function handleScroll() {
+    if (opacity === false && window.scrollY > 10) {
+      setOpacity(!opacity);
+    } else if (opacity === true && window.scrollY < 10) {
+      setOpacity(!opacity);
+    }
+  }
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${opacity && styles.active}`}>
       <div className={`container ${styles.wrapper}`}>
         <a className={styles.linkLogo} href="/" title="AnimeCompany">
           <img

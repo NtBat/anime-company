@@ -7,24 +7,52 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 100vh;
+    height: 45vh;
+    background-position: center;
+    width: 100%;
+
+    @media(min-width:900px) {
+      height: 100vh;
+    }
   }
 
   .text {
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
+    padding: 0 15px;
+    margin-top: 10px;
+
+    @media(min-width: 900px) {
+      margin-top: 0;
+      width: 80%;
+    }
 
     h1 {
-      display: inline-flex;
-      padding: 10px 30px;
       color: $color-zero;
-      display: inline-flex;
-      border-radius: 5px;
-      font-size: 15px;
-      padding: 15px 40px;
-      background: linear-gradient(
-      84deg
-      , rgba(2,253,238,1) 0%, rgba(84,139,237,1) 100%);
+      font-size: 20px;
+
+      @media(min-width: 900px) {
+        font-size: 40px;
+      }
+    }
+
+    .description {
+      margin-top: 20px;
+
+      @media(min-width: 1200px) {
+        width: 33vw;
+      }
+
+      p {
+        color: #FFF;
+        font-size: 13px;
+        font-weight: 300;        
+
+        @media(min-width: 900px) {
+          line-height: 26px;
+          font-size: 22px;
+        }
+      }
     }
   }
 
@@ -32,27 +60,33 @@
     margin-top: 20px;
     display: flex;
 
-    @media(max-width: 550px) {
-      flex-direction: column;
-    }
-
     .button {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 10px 20px;
       border-radius: 5px;
-      padding: 15px 40px;
+      padding: 8px 5px;
       border: none;
       cursor: pointer;
-      width: 200px;
-      font-size: 15px;
+      width: 133px;
+      font-size: 13px;
       font-weight: bold;
       font-family: "Poppins";
 
+      @media(min-width: 900px) {
+        font-size: 15px;
+        padding: 15px 40px;
+        width: 220px;
+      }
+
       img {
-        width: 22px;
+        width: 12px;
         margin-right: 8px;
+
+        @media(min-width: 900px) {
+          width: 22px;
+        }
       }
 
       &.trailer {
@@ -64,82 +98,7 @@
       &.info {
         background: #989898;
         color: #fff;
-
-        @media(max-width: 550px) {
-          margin-top: 20px;
-        }
       }
     }
-  }
-}
-
-.wrapperLoading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  .loading {
-    display: block;
-    float: left;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-left: 10%;
-    margin-top: 100px;
-    position: relative;
-    box-sizing: border-box;
-    background-color: transparent;
-    animation: circle 1s linear infinite;
-    
-  
-    .circle {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0%;
-      top: 0%;
-      border-radius: 50%;
-  
-      &:before {
-        content: "";
-        width: 30%;
-        height: 30%;
-        border-radius: 50%;
-        background-color: $color-zero;
-        position: absolute;
-        top: -15%;
-        left: 35%;
-      }
-  
-      &.circle1 {
-        transform: rotate(0);
-        opacity: 0.2;
-      }
-      &.circle2 {
-        transform: rotate(40deg);
-        opacity: 0.4;
-      }
-      &.circle3 {
-        transform: rotate(80deg);
-        opacity: 0.5;
-      }
-      &.circle4 {
-        transform: rotate(120deg);
-        opacity: 0.8;
-      }
-      &.circle5 {
-        transform: rotate(160deg);
-        opacity: 1;
-      }
-    }
-  }
-}
-
-@keyframes circle {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }
