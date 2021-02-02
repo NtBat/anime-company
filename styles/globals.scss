@@ -143,6 +143,10 @@ a {
   width: 55px !important;
   background: rgb(0 0 0 / 50%) !important;
 
+  @media(max-width: 600px) {
+    width: 30px !important;
+  }
+
   &:before {
     display: none;
   }
@@ -164,6 +168,10 @@ a {
   z-index: 2 !important;
   background: rgb(0 0 0 / 50%) !important;
   right: 0 !important;
+
+  @media(max-width: 600px) {
+    width: 30px !important;
+  }
 
   &:before {
     display: none;

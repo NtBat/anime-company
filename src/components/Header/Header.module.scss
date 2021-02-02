@@ -78,7 +78,7 @@
       backface-visibility: hidden;
       position: absolute;
       left: 0;
-      border-top: 5px solid #ffffff;
+      border-top: 5px solid $color-zero;
       width: 100%;
       transition: 0.55s;
       border-radius: 7px;
@@ -100,7 +100,7 @@
     top: 0;
     height: 100vh;
     padding: 60px 0;
-    background: red;
+    background: $color-black;
     position: fixed;
     visibility: hidden;
     transform: translateX(-100%);
@@ -118,11 +118,14 @@
       padding: 30px;
 
       display: flex;
-      justify-content: space-between;
       flex-direction: column;
 
+      li:not(:first-child) {
+        margin-top: 40px;
+      }
+
       a {
-        color: #FFF;
+        color: $color-zero;
         text-decoration: none;
         font-size: 16px;
       }
@@ -133,5 +136,6 @@
     position: absolute;
     top: 30px;
     right: 30px;
+    color: $color-zero;
   }
 }

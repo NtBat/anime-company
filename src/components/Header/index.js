@@ -71,7 +71,7 @@ function Header() {
 
       <div className={`${styles.menuMobile} ${menuBurger && styles.active}`}>
         <div className={styles.btnClose} onClick={handleBurger}>
-          <img src="/close.svg" alt="Fechar" />
+          X
         </div>
         <ul className="list">
           <li>
@@ -79,10 +79,14 @@ function Header() {
               <a>Home</a>
             </Link>
           </li>
-
           <li>
-            <Link href="/contato">
-              <a>Contato/</a>
+            <Link href="/">
+              <a>Quem somos</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/">
+              <a>Contato</a>
             </Link>
           </li>
         </ul>

@@ -32,6 +32,10 @@
     margin-top: 20px;
     display: flex;
 
+    @media(max-width: 550px) {
+      flex-direction: column;
+    }
+
     .button {
       display: flex;
       align-items: center;
@@ -60,6 +64,10 @@
       &.info {
         background: #989898;
         color: #fff;
+
+        @media(max-width: 550px) {
+          margin-top: 20px;
+        }
       }
     }
   }
