@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import api from "../../../services/api";
+import Link from "next/link";
+import ModalVideo from "react-modal-video";
 
 import styles from "./featured.module.scss";
 
 export default function Featured() {
-  const [test, setTest] = useState([]);
+  const [isOpen, setOpen] = useState(false);
   const [featured, setFeatured] = useState(null);
 
   useEffect(() => {
@@ -50,8 +52,11 @@ export default function Featured() {
             <h1>
               {featured.attributes.canonicalTitle || anime.attributes.titles.en}
             </h1>
-            <div className={styles.button}>
-              <button className={styles.trailer}>
+            <div className={styles.buttons}>
+              <button
+                className={`${styles.trailer} ${styles.button}`}
+                onClick={() => setOpen(true)}
+              >
                 <img
                   src="/assets/img/play.svg"
                   title="Play trailer"
@@ -59,12 +64,21 @@ export default function Featured() {
                 />
                 Trailer
               </button>
-              <button className={styles.info}>
-                <img src="/assets/img/info.svg" title="Infos" alt="Infos" />
-                Informações
-              </button>
+              <Link href={`/anime/${featured.id}`}>
+                <a className={`${styles.info} ${styles.button}`}>
+                  <img src="/assets/img/info.svg" title="Infos" alt="Infos" />
+                  Informações
+                </a>
+              </Link>
             </div>
           </div>
+          <ModalVideo
+            channel="youtube"
+            autoplay
+            isOpen={isOpen}
+            videoId={`${featured.attributes.youtubeVideoId}`}
+            onClose={() => setOpen(false)}
+          />
         </div>
       ) : (
         <div className={styles.wrapperLoading}>
