@@ -53,6 +53,12 @@ export default function Caroussel({ featured, upcoming, animes }) {
                   alt={anime.attributes.slug}
                   src={anime.attributes.posterImage.medium}
                 />
+                <div className={styles.wrapperTitle}>
+                  <span>
+                    {anime.attributes.canonicalTitle ||
+                      anime.attributes.titles.en}
+                  </span>
+                </div>
               </a>
             </Link>
           ))}
@@ -70,6 +76,12 @@ export default function Caroussel({ featured, upcoming, animes }) {
                   alt={anime.attributes.slug}
                   src={anime.attributes.posterImage.medium}
                 />
+                <div className={styles.wrapperTitle}>
+                  <span>
+                    {anime.attributes.canonicalTitle ||
+                      anime.attributes.titles.en}
+                  </span>
+                </div>
               </a>
             </Link>
           ))}
@@ -87,6 +99,12 @@ export default function Caroussel({ featured, upcoming, animes }) {
                   alt={anime.attributes.slug}
                   src={anime.attributes.posterImage.medium}
                 />
+                <div className={styles.wrapperTitle}>
+                  <span>
+                    {anime.attributes.canonicalTitle ||
+                      anime.attributes.titles.en}
+                  </span>
+                </div>
               </a>
             </Link>
           ))}
